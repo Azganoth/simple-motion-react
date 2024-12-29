@@ -8,6 +8,7 @@ export default {
   collectCoverageFrom: [
     "<rootDir>/src/**/*.{ts,tsx}",
     "!<rootDir>/src/**/*.d.ts",
+    "!<rootDir>/src/**/*.stories.{ts,tsx}",
   ],
   watchPlugins: [
     "jest-watch-typeahead/filename",

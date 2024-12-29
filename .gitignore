@@ -1,5 +1,6 @@
 # build output
 lib/
+storybook-static/
 
 # tests output
 coverage/
@@ -15,3 +16,5 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+*storybook.log

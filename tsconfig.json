@@ -10,7 +10,7 @@
     "noEmit": true,
     "strict": true,
     "jsx": "react-jsx",
-    "types": []
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

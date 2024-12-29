@@ -12,7 +12,11 @@ export default [
     ],
     plugins: [
       resolve(),
-      typescript({ declaration: true, declarationDir: "lib/types" }),
+      typescript({
+        declaration: true,
+        declarationDir: "lib/types",
+        exclude: ["**/*.test.{ts,tsx}"],
+      }),
     ],
     external: ["react", "react-dom"],
   },

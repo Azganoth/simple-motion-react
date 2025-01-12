@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react";
+import "../src/test-utils/styles.css";
 import theme from "./theme";
 
 export default {
@@ -12,6 +13,14 @@ export default {
     layout: "centered",
     docs: {
       theme,
+      source: {
+        language: "tsx",
+      },
+    },
+    options: {
+      storySort: {
+        order: ["Transition"],
+      },
     },
   },
   tags: ["autodocs"],

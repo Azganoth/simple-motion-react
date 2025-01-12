@@ -15,7 +15,11 @@ export default [
       typescript({
         declaration: true,
         declarationDir: "lib/types",
-        exclude: ["**/*.test.{ts,tsx}", "**/*.stories.{ts,tsx}"],
+        exclude: [
+          "**/*.test.{ts,tsx}",
+          "**/*.stories.{ts,tsx}",
+          "**/test-utils/**/*",
+        ],
       }),
     ],
     external: ["react", "react-dom"],

@@ -9,6 +9,7 @@ export default {
     "<rootDir>/src/**/*.{ts,tsx}",
     "!<rootDir>/src/**/*.d.ts",
     "!<rootDir>/src/**/*.stories.{ts,tsx}",
+    "!<rootDir>/src/test-utils/**/*",
   ],
   watchPlugins: [
     "jest-watch-typeahead/filename",

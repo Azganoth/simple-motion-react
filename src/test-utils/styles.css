@@ -1,0 +1,43 @@
+.story-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: rgb(0 0 0 / 0.1);
+  border-radius: 1rem;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, var(--start-color), var(--end-color));
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
+}
+
+.box--fixed {
+  width: 160px;
+  height: 56px;
+}
+
+.text {
+  color: rgb(255 255 255 / 0.8);
+  font-size: 1.5rem;
+  font-family: "Cascadia Code", monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.emoji-box {
+  padding: 1rem;
+  font-size: 4.5rem;
+}
+
+/* Colors */
+
+.box--space {
+  --start-color: #434343;
+  --end-color: #171717;
+}

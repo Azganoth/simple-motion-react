@@ -41,3 +41,60 @@
   --start-color: #434343;
   --end-color: #171717;
 }
+
+.transition {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* Fade */
+
+.transition--fade-enter-active,
+.transition--fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.transition--fade-enter-from,
+.transition--fade-leave-to {
+  opacity: 0;
+}
+
+.transition--fade-enter-to,
+.transition--fade-leave-from {
+  opacity: 1;
+}
+
+/* Slide */
+
+.transition--slide-down-from {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.transition--slide-down-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.transition--slide-up-from {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.transition--slide-up-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Zoom */
+
+.transition--zoom-in {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.transition--zoom-out {
+  transform: scale(1.1);
+  opacity: 0;
+}

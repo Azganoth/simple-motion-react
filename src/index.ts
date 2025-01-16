@@ -9,3 +9,7 @@ export {
   type TransitionProps,
 } from "./Transition";
 export { TransitionGroup, type TransitionGroupProps } from "./TransitionGroup";
+export {
+  TransitionSwitch,
+  type TransitionSwitchProps,
+} from "./TransitionSwitch";

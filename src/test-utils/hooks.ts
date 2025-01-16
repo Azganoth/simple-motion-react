@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const useAutoToggle = (interval: number, initial = true) => {
   const [state, setState] = useState(initial);
@@ -11,4 +11,9 @@ export const useAutoToggle = (interval: number, initial = true) => {
   }, [interval]);
 
   return state;
+};
+
+export const useMultiAutoToggle = (...intervals: number[]) => {
+  const toggles = intervals.map((interval) => useAutoToggle(interval));
+  return useMemo(() => toggles, [...toggles]);
 };

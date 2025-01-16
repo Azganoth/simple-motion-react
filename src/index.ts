@@ -8,3 +8,4 @@ export {
   type TransitionPhase,
   type TransitionProps,
 } from "./Transition";
+export { TransitionGroup, type TransitionGroupProps } from "./TransitionGroup";

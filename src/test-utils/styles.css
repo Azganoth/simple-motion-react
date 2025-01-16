@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   padding: 1.5rem;
   background: rgb(0 0 0 / 0.1);
   border-radius: 1rem;
@@ -40,6 +43,16 @@
 .box--space {
   --start-color: #434343;
   --end-color: #171717;
+}
+
+.box--city {
+  --start-color: #ec4899;
+  --end-color: #f97316;
+}
+
+.box--ocean {
+  --start-color: #2dd4bf;
+  --end-color: #3b82f6;
 }
 
 .transition {
@@ -85,6 +98,16 @@
 .transition--slide-up-to {
   transform: translateY(0);
   opacity: 1;
+}
+
+.transition--slide-left {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+.transition--slide-right {
+  transform: translateX(20px);
+  opacity: 0;
 }
 
 /* Zoom */

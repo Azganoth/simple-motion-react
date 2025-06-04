@@ -72,9 +72,6 @@ export const Transition = ({
   const isAppearingRef = useRef(appear);
 
   const durationRef = useRef(getDuration(duration, isAppearingRef.current));
-  useLayoutEffect(() => {
-    durationRef.current = getDuration(duration, isAppearingRef.current);
-  }, [duration, isAppearingRef.current]);
 
   useEffect(() => {
     let timeoutId: number | undefined;
@@ -124,6 +121,10 @@ export const Transition = ({
   }, [phase]);
 
   useLayoutEffect(() => {
+    const isAppearing = isFirstMountRef.current && appear;
+    durationRef.current = getDuration(duration, isAppearing);
+    isAppearingRef.current = isAppearing;
+
     setPhase((prevPhase) => {
       if (inProp) {
         if (prevPhase !== "entering" && prevPhase !== "entered") {
@@ -137,7 +138,7 @@ export const Transition = ({
 
       return prevPhase;
     });
-  }, [inProp, enter, exit]);
+  }, [inProp, appear, enter, exit, duration]);
 
   useEffect(() => {
     isFirstMountRef.current = false;
@@ -147,7 +148,7 @@ export const Transition = ({
     const nextChild =
       typeof children === "function" ? children(phase) : children;
     return isValidElement(nextChild)
-      ? (nextChild as ReactElement<any> & { ref?: Ref<any> })
+      ? (nextChild as ReactElement & { ref?: Ref<unknown> })
       : null;
   }, [children, phase]);
 

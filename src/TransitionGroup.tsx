@@ -22,7 +22,7 @@ export const TransitionGroup = ({
   enter,
   exit,
 }: TransitionGroupProps) => {
-  const activeChildKeysRef = useRef(new Set<any>());
+  const activeChildKeysRef = useRef(new Set<unknown>());
   const [renderableChildren, setRenderableChildren] = useState<
     TransitionChild[]
   >([]);
@@ -54,7 +54,7 @@ export const TransitionGroup = ({
       Array.isArray(children) ? children : [children]
     ).filter((child) => isKeyedTransitionChild(child));
 
-    const currChildrenIndexes = new Map<any, number>();
+    const currChildrenIndexes = new Map<unknown, number>();
     for (let i = 0; i < currChildren.length; i++) {
       currChildrenIndexes.set(currChildren[i].key, i);
     }

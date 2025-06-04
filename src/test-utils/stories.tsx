@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export const StoryWrapper = ({ children }: { children: any }) => {
+export const StoryWrapper = ({ children }: { children: React.ReactNode }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
@@ -9,7 +9,7 @@ export const StoryWrapper = ({ children }: { children: any }) => {
     if (!wrapper) return;
 
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         const { width, height } = entry.contentRect;
 
         setDimensions((prevDimensions) => ({
@@ -21,7 +21,7 @@ export const StoryWrapper = ({ children }: { children: any }) => {
 
     resizeObserver.observe(wrapper);
     return () => resizeObserver.disconnect();
-  }, [wrapperRef.current]);
+  }, []);
 
   return (
     <div

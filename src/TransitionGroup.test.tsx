@@ -3,18 +3,21 @@ import { CSSTransition, type CSSTransitionProps } from "./CSSTransition";
 import { Transition, type TransitionProps } from "./Transition";
 import { TransitionGroup } from "./TransitionGroup";
 
-const composeChild = (key?: any, props?: Omit<TransitionProps, "children">) => (
+const composeChild = (
+  key?: React.Key,
+  props?: Omit<TransitionProps, "children">,
+) => (
   <Transition key={key} {...props}>
     {(phase) => <div data-testid={`child-${key}`}>{phase}</div>}
   </Transition>
 );
 
 const composeCSSChild = (
-  key?: any,
+  key?: React.Key,
   props?: Omit<CSSTransitionProps, "children">,
 ) => (
   <CSSTransition key={key} {...props}>
-    <div data-testid={`child-${key}`}>Item {key}</div>
+    <div data-testid={`child-${key}`}>Item {String(key)}</div>
   </CSSTransition>
 );
 

@@ -18,7 +18,7 @@ describe("mergeRefs", () => {
     const ref1 = { current: null };
     const ref2 = { current: null };
 
-    const mergedRef = mergeRefs<any>(ref1, ref2);
+    const mergedRef = mergeRefs<unknown>(ref1, ref2);
 
     const instance = { value: "refValue" };
     mergedRef(instance);

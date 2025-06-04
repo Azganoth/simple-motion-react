@@ -2,7 +2,10 @@ import { act, render, screen } from "@testing-library/react";
 import { Transition, type TransitionProps } from "./Transition";
 import { TransitionSwitch } from "./TransitionSwitch";
 
-const composeChild = (key?: any, props?: Omit<TransitionProps, "children">) => (
+const composeChild = (
+  key?: React.Key,
+  props?: Omit<TransitionProps, "children">,
+) => (
   <Transition key={key} {...props}>
     {(phase) => <div data-testid={`child-${key}`}>{phase}</div>}
   </Transition>

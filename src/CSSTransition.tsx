@@ -98,6 +98,7 @@ export const CSSTransition = ({
     exited: classes.leaveTo,
   };
 
+  // eslint-disable-next-line react/no-children-prop
   return createElement(Transition, {
     ...rest,
     onEnter: (node) => {

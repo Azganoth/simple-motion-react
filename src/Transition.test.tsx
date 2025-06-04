@@ -13,27 +13,27 @@ describe("Transition", () => {
   it("renders each phase", () => {
     const { rerender } = render(<Transition>{child}</Transition>);
 
-    expect(screen.getByText("entered")).toBeInTheDocument;
+    expect(screen.getByText("entered")).toBeInTheDocument();
 
     rerender(<Transition in={false}>{child}</Transition>);
 
-    expect(screen.getByText("exiting")).toBeInTheDocument;
+    expect(screen.getByText("exiting")).toBeInTheDocument();
 
     act(() => {
       jest.runAllTimers();
     });
 
-    expect(screen.getByText("exited")).toBeInTheDocument;
+    expect(screen.getByText("exited")).toBeInTheDocument();
 
     rerender(<Transition in={true}>{child}</Transition>);
 
-    expect(screen.getByText("entering")).toBeInTheDocument;
+    expect(screen.getByText("entering")).toBeInTheDocument();
 
     act(() => {
       jest.runAllTimers();
     });
 
-    expect(screen.getByText("entered")).toBeInTheDocument;
+    expect(screen.getByText("entered")).toBeInTheDocument();
   });
 
   it("triggers each lifecyles handler", () => {
@@ -123,13 +123,13 @@ describe("Transition", () => {
       </Transition>,
     );
 
-    expect(screen.getByText("entering")).toBeInTheDocument;
+    expect(screen.getByText("entering")).toBeInTheDocument();
 
     act(() => {
       jest.runAllTimers();
     });
 
-    expect(screen.getByText("entered")).toBeInTheDocument;
+    expect(screen.getByText("entered")).toBeInTheDocument();
 
     expect(onEnter).toHaveBeenCalledTimes(1);
     expect(onEntering).toHaveBeenCalledTimes(1);

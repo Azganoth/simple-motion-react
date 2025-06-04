@@ -7,7 +7,9 @@ export type TransitionChild =
   | ReactElement<CSSTransitionProps, typeof CSSTransition>;
 
 /* istanbul ignore next */
-export const isKeyedTransitionChild = (child: any): child is TransitionChild =>
+export const isKeyedTransitionChild = (
+  child: unknown,
+): child is TransitionChild =>
   isValidElement(child) &&
   child.key != null &&
   (child.type === Transition || child.type === CSSTransition);

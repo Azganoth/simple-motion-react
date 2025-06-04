@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useAutoToggle = (interval: number, initial = true) => {
   const [state, setState] = useState(initial);
@@ -7,13 +7,34 @@ export const useAutoToggle = (interval: number, initial = true) => {
     const intervalId = setInterval(() => {
       setState((prevState) => !prevState);
     }, interval);
-    return () => clearInterval(intervalId);
+
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [interval]);
 
   return state;
 };
 
 export const useMultiAutoToggle = (...intervals: number[]) => {
-  const toggles = intervals.map((interval) => useAutoToggle(interval));
-  return useMemo(() => toggles, [...toggles]);
+  const [states, setStates] = useState(() => intervals.map(() => true));
+
+  useEffect(() => {
+    const intervalIds = intervals.map((interval, index) =>
+      setInterval(() => {
+        setStates((currentStates) => {
+          const newStates = [...currentStates];
+          newStates[index] = !newStates[index];
+          return newStates;
+        });
+      }, interval),
+    );
+
+    return () => {
+      intervalIds.forEach(clearInterval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(intervals)]);
+
+  return states;
 };

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useAutoToggle } from "./test-utils/hooks";
 import { formatCode, StoryWrapper } from "./test-utils/stories";
 import { Transition, type TransitionProps } from "./Transition";

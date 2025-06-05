@@ -1,4 +1,4 @@
-import { create } from "@storybook/theming";
+import { create } from "storybook/theming";
 
 const BG = "#09090B";
 const BG_CONTENT = "#111111";

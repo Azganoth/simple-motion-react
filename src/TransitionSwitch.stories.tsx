@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { StoryObj } from "@storybook/react";
 import { CSSTransition } from "./CSSTransition";
 import { useAutoToggle } from "./test-utils/hooks";
 import { formatCode, StoryWrapper } from "./test-utils/stories";
@@ -21,7 +21,7 @@ export default {
       control: { disable: true },
     },
   },
-} satisfies Meta<TransitionSwitchProps>;
+};
 
 type Story = StoryObj<TransitionSwitchProps>;
 

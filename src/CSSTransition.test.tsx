@@ -1,9 +1,8 @@
+import { beforeAll, describe, expect, it, jest } from "@jest/globals";
 import { act, render, screen } from "@testing-library/react";
-import { CSSTransition, type CSSTransitionProps } from "./CSSTransition";
+import { CSSTransition } from "./CSSTransition";
 
-const child: CSSTransitionProps["children"] = (
-  <div data-testid="child">TRANSITION</div>
-);
+const child = <div data-testid="child">TRANSITION</div>;
 
 describe("CSSTransition", () => {
   beforeAll(() => {
@@ -27,7 +26,6 @@ describe("CSSTransition", () => {
         exact: true,
       });
     });
-
     render(
       <CSSTransition
         name="fade"
@@ -66,7 +64,6 @@ describe("CSSTransition", () => {
         exact: true,
       });
     });
-
     const { rerender } = render(
       <CSSTransition
         name="fade"
@@ -107,7 +104,6 @@ describe("CSSTransition", () => {
         exact: true,
       });
     });
-
     render(
       <CSSTransition
         name="fade"
@@ -165,7 +161,6 @@ describe("CSSTransition", () => {
         exact: true,
       }),
     );
-
     render(
       <CSSTransition
         enterActiveClass="custom-enter-active"
@@ -206,7 +201,6 @@ describe("CSSTransition", () => {
         exact: true,
       }),
     );
-
     const { rerender } = render(
       <CSSTransition
         leaveActiveClass="custom-leave-active"

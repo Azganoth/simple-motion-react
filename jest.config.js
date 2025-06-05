@@ -4,15 +4,11 @@ import { createDefaultPreset } from "ts-jest";
 export default {
   ...createDefaultPreset(),
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   collectCoverageFrom: [
     "<rootDir>/src/**/*.{ts,tsx}",
     "!<rootDir>/src/**/*.d.ts",
     "!<rootDir>/src/**/*.stories.{ts,tsx}",
     "!<rootDir>/src/test-utils/**/*",
-  ],
-  watchPlugins: [
-    "jest-watch-typeahead/filename",
-    "jest-watch-typeahead/testname",
   ],
 };

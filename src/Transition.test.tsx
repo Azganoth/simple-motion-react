@@ -1,9 +1,8 @@
+import { beforeAll, describe, expect, it, jest } from "@jest/globals";
 import { act, render, screen } from "@testing-library/react";
-import { Transition, type TransitionProps } from "./Transition";
+import { Transition } from "./Transition";
 
-const child: TransitionProps["children"] = (phase) => (
-  <div data-testid="child">{phase}</div>
-);
+const child = (phase: string) => <div data-testid="child">{phase}</div>;
 
 describe("Transition", () => {
   beforeAll(() => {
@@ -12,11 +11,9 @@ describe("Transition", () => {
 
   it("renders each phase", () => {
     const { rerender } = render(<Transition>{child}</Transition>);
-
     expect(screen.getByText("entered")).toBeInTheDocument();
 
     rerender(<Transition in={false}>{child}</Transition>);
-
     expect(screen.getByText("exiting")).toBeInTheDocument();
 
     act(() => {
@@ -26,7 +23,6 @@ describe("Transition", () => {
     expect(screen.getByText("exited")).toBeInTheDocument();
 
     rerender(<Transition in={true}>{child}</Transition>);
-
     expect(screen.getByText("entering")).toBeInTheDocument();
 
     act(() => {
@@ -43,7 +39,6 @@ describe("Transition", () => {
     const onExit = jest.fn();
     const onExiting = jest.fn();
     const onExited = jest.fn();
-
     const { rerender } = render(
       <Transition
         onEnter={onEnter}
@@ -110,7 +105,6 @@ describe("Transition", () => {
     const onEnter = jest.fn();
     const onEntering = jest.fn();
     const onEntered = jest.fn();
-
     render(
       <Transition
         appear
@@ -215,39 +209,53 @@ describe("Transition", () => {
         {child}
       </Transition>,
     );
+
     act(() => {
       jest.advanceTimersByTime(durations.appear / 2);
     });
+
     expect(screen.getByText("entering")).toBeInTheDocument();
+
     act(() => {
       jest.runAllTimers();
     });
+
     expect(screen.getByText("entered")).toBeInTheDocument();
+
     rerender(
       <Transition appear in={false} duration={durations}>
         {child}
       </Transition>,
     );
+
     act(() => {
       jest.advanceTimersByTime(durations.exit / 2);
     });
+
     expect(screen.getByText("exiting")).toBeInTheDocument();
+
     act(() => {
       jest.runAllTimers();
     });
+
     expect(screen.getByText("exited")).toBeInTheDocument();
+
     rerender(
       <Transition appear in={true} duration={durations}>
         {child}
       </Transition>,
     );
+
     act(() => {
       jest.advanceTimersByTime(durations.enter / 2);
     });
+
     expect(screen.getByText("entering")).toBeInTheDocument();
+
     act(() => {
       jest.runAllTimers();
     });
+
     expect(screen.getByText("entered")).toBeInTheDocument();
   });
 
@@ -322,12 +330,15 @@ describe("Transition", () => {
         {child}
       </Transition>,
     );
+
     act(() => {
       jest.runAllTimers();
     });
+
     expect(onEnter).toHaveBeenCalledWith(expect.any(HTMLElement), true);
     expect(onEntering).toHaveBeenCalledWith(expect.any(HTMLElement), true);
     expect(onEntered).toHaveBeenCalledWith(expect.any(HTMLElement), true);
+
     rerender(
       <Transition
         in={false}
@@ -338,6 +349,7 @@ describe("Transition", () => {
         {child}
       </Transition>,
     );
+
     rerender(
       <Transition
         in={true}
@@ -348,9 +360,11 @@ describe("Transition", () => {
         {child}
       </Transition>,
     );
+
     act(() => {
       jest.runAllTimers();
     });
+
     expect(onEnter).toHaveBeenCalledWith(expect.any(HTMLElement), false);
     expect(onEntering).toHaveBeenCalledWith(expect.any(HTMLElement), false);
     expect(onEntered).toHaveBeenCalledWith(expect.any(HTMLElement), false);

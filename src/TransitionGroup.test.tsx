@@ -1,3 +1,4 @@
+import { beforeAll, describe, expect, it, jest } from "@jest/globals";
 import { act, render, screen } from "@testing-library/react";
 import { CSSTransition, type CSSTransitionProps } from "./CSSTransition";
 import { Transition, type TransitionProps } from "./Transition";

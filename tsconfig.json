@@ -9,8 +9,7 @@
     "esModuleInterop": true,
     "noEmit": true,
     "strict": true,
-    "jsx": "react-jsx",
-    "types": ["jest", "@testing-library/jest-dom"]
+    "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src", "jest.setup.ts"]
 }

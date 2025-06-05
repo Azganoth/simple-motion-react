@@ -22,6 +22,7 @@ export const TransitionGroup = ({
   enter,
   exit,
 }: TransitionGroupProps) => {
+  // Used to prevent children from being prematurely removed if their exit animation is interrupted.
   const activeChildKeysRef = useRef(new Set<unknown>());
   const [renderableChildren, setRenderableChildren] = useState<
     TransitionChild[]
@@ -69,7 +70,7 @@ export const TransitionGroup = ({
         const currIndex = currChildrenIndexes.get(prevKey);
 
         if (currIndex === undefined) {
-          // Child removed, render it in exiting state
+          // Child removed, render it for it's exiting state
           nextChildren.push(createRenderableChild(prevChild, true));
         } else {
           // Child persisted, render it after new children

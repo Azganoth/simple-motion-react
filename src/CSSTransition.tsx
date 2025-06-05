@@ -98,6 +98,8 @@ export const CSSTransition = ({
     exited: classes.leaveTo,
   };
 
+  // Hook into the underlying <Transition> component's lifecycle callbacks
+  // to add and remove CSS classes at appropriate moments.
   // eslint-disable-next-line react/no-children-prop
   return createElement(Transition, {
     ...rest,

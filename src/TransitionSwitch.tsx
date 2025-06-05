@@ -7,9 +7,9 @@ export type TransitionSwitchProps = {
 
 // TODO: implement "out-in" and "in-out" modes
 export const TransitionSwitch = ({ children }: TransitionSwitchProps) => {
-  const [renderableChild, setRenderableChild] = useState<
-    TransitionChild | undefined
-  >(isKeyedTransitionChild(children) ? children : undefined);
+  const [renderableChild, setRenderableChild] = useState(
+    isKeyedTransitionChild(children) ? children : undefined,
+  );
 
   const switchChild = (prev: TransitionChild, next?: TransitionChild) =>
     cloneElement(prev, {

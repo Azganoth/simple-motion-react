@@ -20,6 +20,7 @@ const getDuration = (
   if (typeof duration === "number") {
     return { enter: duration, exit: duration };
   }
+
   const { appear = 150, enter = 150, exit = 150 } = duration;
   return {
     enter: isAppearing ? appear : enter,
@@ -65,6 +66,8 @@ export const Transition = ({
   const nodeRef = useRef<HTMLElement>();
 
   const [phase, setPhase] = useState<TransitionPhase>(() =>
+    // It's initialized to 'exited' to allow for an 'appear' transition,
+    // or 'entered' if no appear transition is needed on mount.
     inProp && !appear ? "entered" : "exited",
   );
 
@@ -77,6 +80,9 @@ export const Transition = ({
     let timeoutId: number | undefined;
     const { onEnter, onEntering, onEntered, onExit, onExiting, onExited } =
       eventHandlersRef.current;
+
+    // Trigger side effects based on phase. Reflow is crucial for CSS transitions
+    // to work correctly, ensuring the browser picks up the initial state before transitioning.
     switch (phase) {
       case "entering": {
         onEnter?.(nodeRef.current, isAppearingRef.current);

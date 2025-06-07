@@ -1,0 +1,42 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+import * as CSSTransitionStories from "../src/CSSTransition.stories";
+import * as TransitionStories from "../src/Transition.stories";
+import * as TransitionGroupStories from "../src/TransitionGroup.stories";
+import * as TransitionSwitchStories from "../src/TransitionSwitch.stories";
+
+<Meta title="Introduction" />
+
+# Simple Motion React
+
+A lightweight React transition library for animating component lifecycle changes.
+
+## Features
+
+- **Declarative API**: Simple and intuitive API for handling transitions.
+- **Lifecycle Control**: Hooks for each phase of the transition (`entering`, `entered`, `exiting`, `exited`).
+- **CSS Transitions**: Easily apply CSS classes for animations.
+- **Group Animations**: Animate a list of components as they are added or removed.
+- **Switchable Animations**: Seamlessly transition between two components.
+- **Lightweight**: Small and efficient with zero runtime dependencies, ensuring a minimal impact on your bundle size.
+
+## Demos
+
+### Fade
+
+<Canvas of={TransitionStories.Fade} />
+
+### Slide Down and Up
+
+<Canvas of={CSSTransitionStories.SlideDownUp} />
+
+### Zoom In and Out
+
+<Canvas of={CSSTransitionStories.ZoomInOut} />
+
+### Slide Switch
+
+<Canvas of={TransitionSwitchStories.Slide} />
+
+### Slide Group
+
+<Canvas of={TransitionGroupStories.Slide} />

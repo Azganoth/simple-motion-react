@@ -13,6 +13,7 @@ import {
  */
 export default {
   component: TransitionSwitch,
+  title: "Components/TransitionSwitch",
   argTypes: {
     children: {
       description:

@@ -1,0 +1,148 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Recipes" />
+
+# Recipes
+
+This section provides practical, real-world examples to help you solve common animation challenges with `simple-motion-react`.
+
+## Animating a list with `TransitionGroup`
+
+The most common use for `TransitionGroup` is to animate items as they are added to or removed from a list.
+
+### 1. The Component
+
+First, create a stateful component to manage your list of items. Then, wrap your list rendering with `<TransitionGroup>` and wrap each list item with `<CSSTransition>`. Remember to provide a unique and stable `key` to each item.
+
+```tsx
+import React, { useState } from "react";
+import { TransitionGroup, CSSTransition } from "@simple-motion/react";
+import "./styles.css"; // Your stylesheet
+
+let nextId = 3;
+const initialItems = [
+  { id: 1, text: "First Item" },
+  { id: 2, text: "Second Item" },
+];
+
+export const TodoList = () => {
+  const [items, setItems] = useState(initialItems);
+
+  const addItem = () => {
+    setItems((prev) => [...prev, { id: nextId++, text: `Item ${nextId}` }]);
+  };
+
+  const removeItem = (id) => {
+    setItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  return (
+    <div>
+      <button onClick={addItem}>Add Item</button>
+      <ul className="todo-list">
+        <TransitionGroup>
+          {items.map(({ id, text }) => (
+            <CSSTransition key={id} duration={500} name="fade" unmount>
+              <li className="todo-item">
+                {text}
+                <button className="remove-btn" onClick={() => removeItem(id)}>
+                  &times;
+                </button>
+              </li>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+      </ul>
+    </div>
+  );
+};
+```
+
+### 2. The CSS
+
+Add the corresponding CSS classes to your stylesheet to create the fade animation.
+
+```css
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 500ms ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+```
+
+## Animating Page Transitions with `TransitionSwitch`
+
+`<TransitionSwitch>` is perfect for animating between different components, such as pages in a client-side router.
+
+### 1. The Component
+
+The key is to use a state variable to track the current "page" or "view". Pass this state as the `key` to your `<CSSTransition>` child. When the key changes, `<TransitionSwitch>` will orchestrate the out-in animation.
+
+```tsx
+import React, { useState } from "react";
+import { TransitionSwitch, CSSTransition } from "@simple-motion/react";
+import "./styles.css"; // Your stylesheet
+
+const PageOne = () => <div className="page">Page One</div>;
+const PageTwo = () => <div className="page">Page Two</div>;
+
+export const PageRouter = () => {
+  const [page, setPage] = useState("one");
+
+  return (
+    <div>
+      <nav>
+        <button onClick={() => setPage("one")}>Page 1</button>
+        <button onClick={() => setPage("two")}>Page 2</button>
+      </nav>
+      <div className="page-container">
+        <TransitionSwitch>
+          <CSSTransition key={page} name="slide" duration={500} appear>
+            {page === "one" ? <PageOne /> : <PageTwo />}
+          </CSSTransition>
+        </TransitionSwitch>
+      </div>
+    </div>
+  );
+};
+```
+
+### 2. The CSS
+
+For a slide effect, you'll want different classes for entering and exiting to create the illusion of one page sliding out while another slides in.
+
+```css
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 500ms ease-in-out;
+}
+
+/* Entering page slides in from the right */
+.slide-enter-from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slide-enter-to {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Exiting page slides out to the left */
+.slide-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+```

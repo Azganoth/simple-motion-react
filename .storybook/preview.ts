@@ -19,7 +19,7 @@ export default {
     },
     options: {
       storySort: {
-        order: ["Transition"],
+        order: ["Introduction", "Getting Started", "Recipes", "Contributing"],
       },
     },
   },

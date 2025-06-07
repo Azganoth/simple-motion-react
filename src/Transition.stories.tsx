@@ -14,6 +14,7 @@ import { Transition, type TransitionProps } from "./Transition";
  */
 export default {
   component: Transition,
+  title: "Components/Transition",
   argTypes: {
     children: {
       description:

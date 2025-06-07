@@ -11,5 +11,5 @@
     "strict": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "jest.setup.ts"]
+  "include": ["src", "jest.setup.ts", "docs"]
 }

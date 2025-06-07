@@ -1,0 +1,42 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Contributing" />
+
+# Contributing
+
+Interested in contributing to Simple Motion React? This guide will get you set up for local development.
+
+## Local Development Setup
+
+The project uses **pnpm** as its package manager and requires **Node.js version 22** or higher.
+
+1.  **Fork & Clone**: Fork the repository on GitHub and clone it to your local machine.
+
+2.  **Install Dependencies**: Navigate to the project directory and run the following command. The project is configured to use `pnpm` version 10.12.1 or higher.
+
+```bash
+pnpm install
+```
+
+This command will install all necessary development dependencies, such as `tsup`, `jest`, and `storybook`.
+
+## Available Scripts
+
+Once the setup is complete, you can use the following scripts defined in `package.json`:
+
+- `pnpm build`
+  - Builds the library for production using `tsup`, creating ESM, CJS, and TypeScript declaration files in the `/lib` directory.
+- `pnpm test`
+  - Runs the entire test suite using `jest`.
+- `pnpm lint`
+  - Runs `eslint` to check for code quality and style issues across the project.
+- `pnpm storybook`
+  - Starts the Storybook development server, usually on port 6006. This is the best way to see your changes to components in real-time.
+
+## Contributing
+
+All kinds of contributions are welcomed, from bug fixes to new features.
+
+1.  **Create a Branch**: Create a new branch for your feature or bug fix from the `main` branch.
+2.  **Make Changes**: Write your code and add corresponding tests. Make sure the tests and linter pass locally.
+3.  **Open a Pull Request**: Push your branch to your fork and open a pull request against the `main` branch of the original repository. Please provide a clear description of the changes you've made.

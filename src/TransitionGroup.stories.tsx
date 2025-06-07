@@ -10,6 +10,7 @@ import { TransitionGroup, type TransitionGroupProps } from "./TransitionGroup";
  */
 export default {
   component: TransitionGroup,
+  title: "Components/TransitionGroup",
   argTypes: {
     children: {
       description:

@@ -1,0 +1,74 @@
+import { Meta, Title } from "@storybook/addon-docs/blocks";
+
+<Meta title="Getting Started" />
+
+# Getting Started
+
+This guide will walk you through installing `simple-motion-react` and creating your first transition animation.
+
+## Installation
+
+First, add the library to your project using your preferred package manager. The package name is `@simple-motion/react`.
+
+```bash
+pnpm add @simple-motion/react
+```
+
+or
+
+```bash
+npm install @simple-motion/react
+```
+
+## Quick Start: Fade Animation
+
+The most common use case is animating a single component when it mounts and unmounts. We can achieve this with the `<CSSTransition>` component.
+
+### 1. Add the Component
+
+Create a component that toggles a piece of state to control the `in` prop of the `<CSSTransition>` component. We will use the `name` prop to assign base class names for the animation.
+
+```tsx
+import React, { useState } from "react";
+import { CSSTransition } from "@simple-motion/react";
+import "./styles.css"; // Your stylesheet
+
+export const MyFirstTransition = () => {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShow((prev) => !prev)}>Toggle Element</button>
+
+      <CSSTransition in={show} duration={500} name="fade" unmount>
+        <div className="box box--ocean text">Hello, World!</div>
+      </CSSTransition>
+    </div>
+  );
+};
+```
+
+The example above is a simplified version of the pattern used in the `Fade` story for CSSTransition.
+
+### 2. Add the CSS
+
+For the `name="fade"` prop to work, you need to define the corresponding CSS classes in your stylesheet. These classes define the start, active, and end states of the animation.
+
+```css
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+```
+
+With these two parts in place, clicking the button will now gracefully fade the "Hello, World!" element in and out of view.

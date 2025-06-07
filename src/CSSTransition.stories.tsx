@@ -10,6 +10,7 @@ import { formatCode, StoryWrapper } from "./test-utils/stories";
  */
 export default {
   component: CSSTransition,
+  title: "Components/CSSTransition",
   argTypes: {
     children: {
       description: "The content to render.",

@@ -13,6 +13,7 @@ A lightweight React transition library for animating component lifecycle changes
 - **CSS Transitions**: Easily apply CSS classes for animations.
 - **Group Animations**: Animate a list of components as they are added or removed.
 - **Switchable Animations**: Seamlessly transition between two components.
+- **Lightweight**: Small and efficient with zero runtime dependencies, ensuring a minimal impact on your bundle size.
 
 ## Installation
 

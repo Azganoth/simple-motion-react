@@ -15,6 +15,8 @@ A lightweight React transition library for animating component lifecycle changes
 - **Switchable Animations**: Seamlessly transition between two components.
 - **Lightweight**: Small and efficient with zero runtime dependencies, ensuring a minimal impact on your bundle size.
 
+[Documentation](https://simple-motion-react.vercel.app/)
+
 ## Installation
 
 ```bash

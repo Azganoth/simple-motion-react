@@ -29,7 +29,8 @@
     "storybook:build": "storybook build",
     "test": "jest",
     "test:coverage": "jest --collect-coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "release": "standard-version"
   },
   "dependencies": {
     "react": "^18.3.1"
